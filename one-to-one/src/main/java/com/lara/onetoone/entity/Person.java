@@ -1,7 +1,9 @@
 package com.lara.onetoone.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Person {
@@ -9,6 +11,27 @@ public class Person {
 	private int id;
 	private String first_name;
 	private String last_name;
+	
+	//Bi-Directional OneToOne
+	//Step1: specify mapped by = 
+	@OneToOne(mappedBy = "person", cascade=CascadeType.ALL)
+	private Address address;
+	
+	// STEP 2: Getters and Setters
+	
+	public Address getAddress() {
+		return address;
+	}
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+	
+	
+	
+	
+	
+	
+	
 	public int getId() {
 		return id;
 	}
